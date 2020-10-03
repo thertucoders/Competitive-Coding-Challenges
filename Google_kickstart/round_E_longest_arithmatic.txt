@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+	int t, s=1;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		int z=0;
+		vector<int> arr, brr, v;
+		for(int i=0; i<n; i++)
+		{
+			int a;
+			cin>>a;
+			arr.push_back(a);
+			if(i>0)
+			{
+				brr.push_back(arr[i]-arr[i-1]);
+				z++;
+			}
+		}
+		int max=1;
+		for(int i=0; i<=brr.size()-1; i++)
+		{
+			if(brr.size()==1)
+				v.push_back(max);
+			else if(brr[i]!=brr[i+1])
+			{
+				v.push_back(max);
+				max=1;
+			}
+			else
+			max++;
+		}
+		cout<<"Case #"<<s<<": "<<*max_element(v.begin(), v.end())+1<<endl;
+		s++;
+	}
+	return 0;
+}
